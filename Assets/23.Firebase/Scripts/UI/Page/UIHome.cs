@@ -16,6 +16,7 @@ public class UIHome : UIPage
 	public Button addGemButton;
 	public Button signOutButton;
 	public Button huntButton;
+	public Button rankButton;
 
 	public TextMeshProUGUI displayName;
 	public TextMeshProUGUI gold;
@@ -30,6 +31,12 @@ public class UIHome : UIPage
 		addGemButton.onClick.AddListener(AddGemButtonClick);
 		signOutButton.onClick.AddListener(SignOutButtonClick);
 		huntButton.onClick.AddListener(HuntButtonClick);
+		rankButton.onClick.AddListener(RankButtonClick);
+	}
+
+	private void RankButtonClick()
+	{
+		UIManager.Instance.PageOpen<UIRank>();
 	}
 
 	private void AddGemButtonClick()

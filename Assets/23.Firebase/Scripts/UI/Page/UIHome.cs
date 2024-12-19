@@ -17,6 +17,7 @@ public class UIHome : UIPage
 	public TextMeshProUGUI displayName;
 	public TextMeshProUGUI gold;
 	public TextMeshProUGUI exp;
+	public TextMeshProUGUI level;
 
 	private void Awake()
 	{
@@ -30,7 +31,9 @@ public class UIHome : UIPage
 	{
 		UserData data = FirebaseManager.Instance.CurrentUserData;
 		data.exp += 1;
+		data.SetLevel();
 		FirebaseManager.Instance.UpdateUserData("exp", data.exp, (x) => { SetUserData(data); });
+		FirebaseManager.Instance.UpdateUserData("level", data.level, (x) => { SetUserData(data); });
 	}
 
 	private void SignOutButtonClick()
@@ -92,5 +95,6 @@ public class UIHome : UIPage
 	{
 		gold.text = userData.gold.ToString();
 		exp.text = userData.exp.ToString();
+		level.text = userData.level.ToString();
 	}
 }

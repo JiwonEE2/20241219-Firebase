@@ -22,6 +22,8 @@ public class UserData
 	public int exp;
 	public UserClass userClass;
 
+	private int[] levelStep = { 5, 10, 15, 20, 25, 30, 35, 40, 45, 50 };
+
 	// 기본 생성자
 	public UserData() { }
 
@@ -45,6 +47,21 @@ public class UserData
 		this.gold = gold;
 		this.exp = exp;
 		this.userClass = userClass;
+	}
+
+	// level up
+	public void SetLevel()
+	{
+		for (int i = 0; i < levelStep.Length; i++)
+		{
+			// exp:0, levelstep[0]:5
+			if (exp > levelStep[i]) continue;
+			else
+			{
+				level = i + 1;
+				break;
+			}
+		}
 	}
 }
 

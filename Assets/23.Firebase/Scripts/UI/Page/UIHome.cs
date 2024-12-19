@@ -10,12 +10,16 @@ using UnityEngine.UI;
 public class UIHome : UIPage
 {
 	public Image profileImage;
+
 	public Button profileChangeButton;
 	public Button addGoldButton;
+	public Button addGemButton;
 	public Button signOutButton;
 	public Button huntButton;
+
 	public TextMeshProUGUI displayName;
 	public TextMeshProUGUI gold;
+	public TextMeshProUGUI gem;
 	public TextMeshProUGUI exp;
 	public TextMeshProUGUI level;
 
@@ -23,8 +27,16 @@ public class UIHome : UIPage
 	{
 		profileChangeButton.onClick.AddListener(ProfileChangeButtonClick);
 		addGoldButton.onClick.AddListener(AddGoldButtonClick);
+		addGemButton.onClick.AddListener(AddGemButtonClick);
 		signOutButton.onClick.AddListener(SignOutButtonClick);
 		huntButton.onClick.AddListener(HuntButtonClick);
+	}
+
+	private void AddGemButtonClick()
+	{
+		UserData data = FirebaseManager.Instance.CurrentUserData;
+		data.gem += 1;
+		FirebaseManager.Instance.UpdateUserData("gem", data.gem, (x) => { SetUserData(data); });
 	}
 
 	private void HuntButtonClick()
@@ -94,6 +106,7 @@ public class UIHome : UIPage
 	public void SetUserData(UserData userData)
 	{
 		gold.text = userData.gold.ToString();
+		gem.text = userData.gem.ToString();
 		exp.text = userData.exp.ToString();
 		level.text = userData.level.ToString();
 	}

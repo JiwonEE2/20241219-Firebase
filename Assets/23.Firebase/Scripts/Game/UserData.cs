@@ -19,6 +19,7 @@ public class UserData
 	public string userName;
 	public int level;
 	public int gold;
+	public int gem;
 	public int exp;
 	public UserClass userClass;
 
@@ -34,17 +35,19 @@ public class UserData
 		userName = "무명의 전사";
 		level = 1;
 		gold = 0;
+		gem = 0;
 		exp = 0;
 		userClass = UserClass.Warrior;
 	}
 
-	public UserData(string userId, string userName, int level, int gold, int exp, UserClass userClass)
+	public UserData(string userId, string userName, int level, int gold, int gem, int exp, UserClass userClass)
 	{
 		// 로그인할 때 사용할 생성자
 		this.userId = userId;
 		this.userName = userName;
 		this.level = level;
 		this.gold = gold;
+		this.gem = gem;
 		this.exp = exp;
 		this.userClass = userClass;
 	}

@@ -9,6 +9,7 @@ public class UIRank : UIPage
 {
 	public Button goBackButton;
 
+	public List<GameObject> rankSlots;
 	public List<TextMeshProUGUI> userNameTexts;
 	public List<TextMeshProUGUI> levelTexts;
 
@@ -33,10 +34,16 @@ public class UIRank : UIPage
 	{
 		userDatas = FirebaseManager.Instance.GetAllUserData();
 
+		foreach (GameObject rankSlot in rankSlots)
+		{
+			rankSlot.gameObject.SetActive(false);
+		}
+
 		for (int i = 0; i < userDatas.Count; i++)
 		{
+			rankSlots[i].gameObject.SetActive(true);
 			userNameTexts[i].text = userDatas[i].userName;
-			levelTexts[i].text = userDatas[i].level.ToString();
+			levelTexts[i].text = $"Lv. {userDatas[i].level}";
 		}
 	}
 }

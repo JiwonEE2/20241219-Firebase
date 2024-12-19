@@ -1,3 +1,29 @@
+# Firebase 관련 DLL, PDB, 리포지토리 폴더 제외
+/Assets/Plugins/Firebase/*.dll
+/Assets/Plugins/Firebase/Editor/*.dll
+/Assets/Firebase/m2repository/
+/Assets/GeneratedLocalRepo/
+
+# Plugins 폴더의 확장자 제외
+/Assets/Plugins/**/*.dll
+/Assets/Plugins/**/*.pdb
+
+# Firebase google-services 설정 제외
+/Assets/StreamingAssets/google-services-*.json
+
+# AndroidResolverDependencies 자동 생성 파일 제외
+/ProjectSettings/AndroidResolverDependencies.xml
+
+# .bundle 파일 제외
+*.bundle
+
+# .so (Shared Object) 파일 제외
+*.so
+
+# 외부 에셋 제외
+/Assets/SCI-FI UI Pack Pro/
+/Assets/TextMesh Pro/
+
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/main/Unity.gitignore

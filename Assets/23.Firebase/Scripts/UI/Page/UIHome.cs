@@ -10,17 +10,27 @@ using UnityEngine.UI;
 public class UIHome : UIPage
 {
 	public Image profileImage;
-	public TextMeshProUGUI displayName;
 	public Button profileChangeButton;
-	public TextMeshProUGUI gold;
 	public Button addGoldButton;
 	public Button signOutButton;
+	public Button huntButton;
+	public TextMeshProUGUI displayName;
+	public TextMeshProUGUI gold;
+	public TextMeshProUGUI exp;
 
 	private void Awake()
 	{
 		profileChangeButton.onClick.AddListener(ProfileChangeButtonClick);
 		addGoldButton.onClick.AddListener(AddGoldButtonClick);
 		signOutButton.onClick.AddListener(SignOutButtonClick);
+		huntButton.onClick.AddListener(HuntButtonClick);
+	}
+
+	private void HuntButtonClick()
+	{
+		UserData data = FirebaseManager.Instance.CurrentUserData;
+		data.exp += 1;
+		FirebaseManager.Instance.UpdateUserData("exp", data.exp, (x) => { SetUserData(data); });
 	}
 
 	private void SignOutButtonClick()
@@ -81,5 +91,6 @@ public class UIHome : UIPage
 	public void SetUserData(UserData userData)
 	{
 		gold.text = userData.gold.ToString();
+		exp.text = userData.exp.ToString();
 	}
 }
